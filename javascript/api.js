@@ -14,7 +14,7 @@ async function getWeatherData(cityName) {
 	try {
 		const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${cityName}&days=3&aqi=yes&alerts=yes`, {mode: "cors"});
 		const data = await response.json();
-		console.log(data);
+		// console.log(data);
 
 		const city = new CityData;
 		// Current data
@@ -47,7 +47,8 @@ async function getWeatherData(cityName) {
 		// TODO Alert
 
 
-		console.log(city);
+		// console.log(city);
+		return city;
 		
 	} catch(e) {
 		// statements

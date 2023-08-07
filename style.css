@@ -16,3 +16,7 @@
 .results ul li:hover {
 	background: lightgreen;
 }
+
+.hidden {
+	display: none;
+}
