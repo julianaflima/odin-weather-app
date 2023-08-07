@@ -1,5 +1,6 @@
-import { getAutocompleteOptions } from "./api.js"
-import { selectCity } from "./select.js"
+import { getAutocompleteOptions } from "./api.js";
+import { selectCity } from "./select.js";
+import { showCityWeather } from "./display.js";
 
 async function showAutocompleteDropdown(cityName) {
 	// console.log(cityName);
@@ -15,15 +16,6 @@ async function showAutocompleteDropdown(cityName) {
 	// add event listener to select from dropdownlist
 	autocompleteList.addEventListener('click', showCityWeather);
 }
-
-function showCityWeather(e) {
-	// console.log(e.target);
-	selectCity(e).then((result) => console.log(result));
-	// clean dropdown
-	document.querySelector('.autocomplete-list').innerHTML = '';
-	document.querySelector('.results').classList.add('hidden');
-}
-
 
 
 export {
