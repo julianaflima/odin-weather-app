@@ -1,5 +1,16 @@
-import { CityData, getWeatherData } from "./api.js";
+import * as api from "./api.js";
+import { showAutocompleteDropdown } from "./autocomplete.js";
 
-let cityName = 'london-city-of-london-greater-london-united-kingdom';
+const input = document.querySelector('#city-input');
+input.addEventListener('keyup', (e) => {
+	const cityName = input.value;
+	showAutocompleteDropdown(cityName);	
+});
+console.log(input.value);
 
-getWeatherData(cityName);
+// let cityName = 'london-city-of-london-greater-london-united-kingdom';
+
+// api.getWeatherData(cityName);
+
+// let cityNameOptions = 'bengaluru'
+// showAutocompleteDropdown(cityNameOptions);

@@ -1,3 +1,5 @@
+const API_KEY = '34a457572d684d08a2114501230308';
+
 class CityData {
 	constructor() {
 		this.alerts = {};
@@ -10,7 +12,6 @@ class CityData {
 
 async function getWeatherData(cityName) {
 	try {
-		const API_KEY = '34a457572d684d08a2114501230308';
 		const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${cityName}&days=3&aqi=yes&alerts=yes`, {mode: "cors"});
 		const data = await response.json();
 		console.log(data);
@@ -43,10 +44,7 @@ async function getWeatherData(cityName) {
 		city.location.name = data.location.name;
 		city.location.country = data.location.country;
 
-		// TODO Alerts
-
-
-
+		// TODO Alert
 
 
 		console.log(city);
@@ -57,8 +55,16 @@ async function getWeatherData(cityName) {
 	}
 }
 
+async function getAutocompleteOptions(inputName) {
+	const response = await fetch(`http://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=${inputName}`, {mode: "cors"});
+	const data = await response.json();
+	// console.log(data);
+	return data
+}
+
 
 export { 
 	CityData,
-	getWeatherData
+	getWeatherData,
+	getAutocompleteOptions
 	};
