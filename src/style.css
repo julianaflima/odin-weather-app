@@ -1,0 +1,98 @@
+:root.night {
+	--background-img: url("./images/night.jpg");
+	--color-base-text: white;
+	--text-shadow: none;
+}
+
+:root.sunny {
+	--background-img: url("./images/sunny.jpg");
+	--color-base-text: black;
+	--text-shadow: none;
+}
+
+:root.cloudy {
+	--background-img: url("./images/cloudy.jpg");
+	--color-base-text: white;
+	--text-shadow: none;
+}
+
+:root.rain {
+	--background-img: url("./images/rain.jpg");
+	--color-base-text: black;
+	--text-shadow: white 0px 2px;
+}
+
+:root.snow {
+	--background-img: url("./images/snow.jpg");
+	--color-base-text: white;
+	--text-shadow: none;
+}
+
+body {
+	background: var(--background-img);
+  background-size: cover;
+  overflow: scroll;
+  background-repeat: no-repeat;
+  height: 100vh;
+  /*background-position: center;*/
+
+}
+
+
+.container {
+	color: var(--color-base-text);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 100px;
+}
+
+.container h1 {
+	text-shadow: var(--text-shadow);
+}
+
+
+.current-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.forecast-container {
+	display: flex;
+}
+
+
+.hidden {
+	display: none;
+}
+
+
+.results {
+	border: 1px solid red;
+	width: max-content;
+	background: white;
+}
+
+.results ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.results ul li {
+	padding: 5px 10px;
+}
+
+.results ul li:hover {
+	background: lightgreen;
+}
+
+
+#current-icon, #forecast-icon, #precipitation-icon {
+	height: 20px;
+	filter: invert(50%) sepia(85%) saturate(3001%) hue-rotate(87deg) brightness(120%) contrast(118%);
+}
