@@ -34,6 +34,13 @@ function displayCurrentWeather(cityData, unit, containerDiv) {
 		<h1> ${cityData.location} </h1>
 		<img src=${icons("./" + cityData.current.icon + ".svg" )} alt="" class="icon" id="current-icon">
 		<div>${cityData.current.condition_text}</div>
+		<div id="current-temperature"> 
+			<span
+			class="temperature"
+			data-temp-metric=${cityData.current.temp.metric} 
+			data-temp-us=${cityData.current.temp.us}>
+				${cityData.current.temp[unit]}</span>&deg;
+		</div>
 		<div>
 			<span 
 			class="temperature" 

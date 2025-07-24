@@ -73,6 +73,7 @@ function nextXDaysForecast(city, data, numberOfDays) {
 		let followingDay = {};
 		followingDay.tempMax = {};
 		followingDay.tempLow = {};
+		
 		followingDay.icon = data.days[i].icon;
 		followingDay.tempMax.metric = Math.round(data.days[i].tempmax);
 		followingDay.tempMax.us = metricToUs(followingDay.tempMax.metric);

@@ -21,9 +21,6 @@ input.addEventListener("keydown", (e) => {
     const toggleUnit = document.getElementById('selected-unit').checked;
 		const selectedUnit = tempUnit(toggleUnit);
 
-		// FROM api.js
-		// api.getWeatherData(cityName, 'metric');
-
 		// display temperature
 		showCityWeather(cityName, selectedUnit);
 	}

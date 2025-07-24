@@ -191,3 +191,7 @@ body {
 	display: flex;
 	align-items: center;
 }
+
+#current-temperature {
+	font-size: 2em;
+}
