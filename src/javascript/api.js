@@ -69,17 +69,31 @@ function nextXDaysForecast(city, data, numberOfDays) {
 
 	const daysToForescast = Math.min(data.days.length, numberOfDays)
 
+	let dayOfWeekDigit = new Date().getDay();
+
 	for (let i = 1; i <= daysToForescast; i++) {
 		let followingDay = {};
 		followingDay.tempMax = {};
 		followingDay.tempLow = {};
-		
+
 		followingDay.icon = data.days[i].icon;
 		followingDay.tempMax.metric = Math.round(data.days[i].tempmax);
 		followingDay.tempMax.us = metricToUs(followingDay.tempMax.metric);
 		followingDay.tempLow.metric = Math.round(data.days[i].tempmin);
 		followingDay.tempLow.us = metricToUs(followingDay.tempLow.metric);
 		followingDay.chanceRain = Math.round(data.days[i].precipprob);
+		followingDay.date = data.days[i].datetime;
+
+
+		// Get day of the week. First day should be tomorrow
+		if (i == 1) {
+			followingDay.weekDay = "Tomorrow";
+		}
+		else {
+			let dayOfWeek = new Date(followingDay.date);
+			let dayOfWeekName = dayOfWeek.toLocaleString('default', {weekday: 'short'});
+			followingDay.weekDay = dayOfWeekName;
+		}
 	
 		city.forecast.push(followingDay);
 	}

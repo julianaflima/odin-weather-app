@@ -195,3 +195,8 @@ body {
 #current-temperature {
 	font-size: 2em;
 }
+
+
+#week-day {
+	margin-bottom: 10px;
+}

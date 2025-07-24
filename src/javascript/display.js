@@ -76,6 +76,9 @@ function displayForecast(cityData, unit, containerDiv) {
 		cardForecastDay.classList.add('forecast-card')
 
 		cardForecastDay.innerHTML = `
+			<div id="week-day">
+				${cityData.forecast[i].weekDay}
+			</div>
 			<img src=${icons("./" + cityData.forecast[i].icon + ".svg" )} alt="" class="icon forecast-card-main-icon">
 			<div class="forecast-card-temp">
 				<span 
