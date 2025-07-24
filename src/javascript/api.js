@@ -1,3 +1,4 @@
+import { metricToUs } from "./temp_unit.js"
 const API_KEY = 'ZYMNF6E2WY66VDTXW4B5Y33MD';
 
 class CityData {
@@ -11,26 +12,29 @@ class CityData {
 }
 
 
-async function getWeatherData(cityName, unit) {
+async function getWeatherData(cityName) {
 	try {
-		const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName}?unitGroup=${unit}&key=${API_KEY}`, {mode: "cors"});
+		const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName}?unitGroup=metric&key=${API_KEY}`, {mode: "cors"});
 		const data = await response.json();
-		console.log(data);
+		// console.log(data);
 
 		const city = new CityData;
 
-		console.log(data.days[0].temp);
 		// Current data
 		city.location = data.resolvedAddress;
 		city.current.condition_text = data.currentConditions.conditions;
 		city.current.icon = data.currentConditions.icon;
-		city.current.temp = Math.round(data.days[0].temp);
-		city.current.tempMax = Math.round(data.days[0].tempmax);
-		city.current.tempMin = Math.round(data.days[0].tempmin);
+		city.current.temp = {};
+		city.current.tempMax = {};
+		city.current.tempLow = {};
+		city.current.temp.metric = Math.round(data.days[0].temp);
+		city.current.temp.us = metricToUs(city.current.temp.metric)
+		city.current.tempMax.metric = Math.round(data.days[0].tempmax);
+		city.current.tempMax.us = metricToUs(city.current.tempMax.metric);
+		city.current.tempLow.metric = Math.round(data.days[0].tempmin);
+		city.current.tempLow.us = metricToUs(city.current.tempLow.metric);
 		city.current.chanceRain = Math.round(data.days[0].precipprob);
 		city.current.humidity = Math.round(data.days[0].humidity);
-		// city.current.temp_c = data.current.temp_c;
-		// city.current.temp_f = data.current.temp_f;
 		// city.current.feelslike_c = data.current.feelslike_c;
 		// city.current.feelslike_f = data.current.feelslike_f;
 		// city.current.air_quality = data.current.air_quality;
@@ -41,14 +45,14 @@ async function getWeatherData(cityName, unit) {
 		// city.location.country = data.location.country;
 		// city.location.time_zone = data.location.tz_id;
 
-		// // TODO Alert
+		//TODO Alert
 
 
 		// TEST FUNCTION FOR FORECAST
 		nextXDaysForecast(city, data, 3);
 		
 
-		console.log(city);
+		// console.log(city);
 		return city;
 		
 	} catch(e) {
@@ -64,6 +68,7 @@ async function getAutocompleteOptions(inputName) {
 	return data
 }
 
+
 function nextXDaysForecast(city, data, numberOfDays) {
 	// TODO CHECK FOR DAYS GREATER THAN THE AVAILABLE DAYS
 
@@ -71,9 +76,13 @@ function nextXDaysForecast(city, data, numberOfDays) {
 
 	for (let i = 1; i <= daysToForescast; i++) {
 		let followingDay = {};
+		followingDay.tempMax = {};
+		followingDay.tempLow = {};
 		followingDay.icon = data.days[i].icon;
-		followingDay.tempMax = Math.round(data.days[i].tempmax);
-		followingDay.tempLow = Math.round(data.days[i].tempmin);
+		followingDay.tempMax.metric = Math.round(data.days[i].tempmax);
+		followingDay.tempMax.us = metricToUs(followingDay.tempMax.metric);
+		followingDay.tempLow.metric = Math.round(data.days[i].tempmin);
+		followingDay.tempLow.us = metricToUs(followingDay.tempLow.metric);
 		followingDay.chanceRain = Math.round(data.days[i].precipprob);
 	
 		city.forecast.push(followingDay);

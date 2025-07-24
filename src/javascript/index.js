@@ -1,59 +1,67 @@
 import "../style.css";
+import "../toggle.css";
 import * as api from "./api.js";
 import { showAutocompleteDropdown } from "./autocomplete.js";
-import { showCityWeather } from "./display.js"
+import { showCityWeather, changeTempUnit } from "./display.js"
+import { tempUnit } from "./temp_unit.js"
 
 
 // const API_KEY = 'ZYMNF6E2WY66VDTXW4B5Y33MD';
 
+// Search Box
 const input = document.querySelector('#city-input');
 input.addEventListener("keydown", (e) => {
 	if (e.key === 'Enter') {
 		e.preventDefault();
-    console.log(e);
+    // console.log(e);
     const cityName = input.value;
-		console.log(cityName);
+		// console.log(cityName);
 		
-		// TODO: GET UNIT PREFERENCE WITH BUTTON
+		// Get the temperature unit selected
+    const toggleUnit = document.getElementById('selected-unit').checked;
+		const selectedUnit = tempUnit(toggleUnit);
 
 		// FROM api.js
 		// api.getWeatherData(cityName, 'metric');
 
-		// TODO LATER
-		// showAutocompleteDropdown(cityName);	
-
-		// display results
-		showCityWeather(cityName);
+		// display temperature
+		showCityWeather(cityName, selectedUnit);
 	}
+
+	// TODO LATER
+	// showAutocompleteDropdown(cityName);	
 });
 
+
+// Change temperature unit displayed
+const toggleUnit = document.getElementById('selected-unit');
+toggleUnit.addEventListener("change", (e) => {
+
+	// Returns "metric" or "us"
+	const selectedUnit = tempUnit(toggleUnit.checked);
+	changeTempUnit(selectedUnit);
+});
+
+
+
+// TODO: Change background depending on time/weather. For now the default is night. To be deleted when I can do that.
 document.documentElement.classList.add('night');
+
+
+// Div where the weather info will be shown
+const displayContainer = document.createElement('div');
+displayContainer.classList.add('display-container');
+document.body.appendChild(displayContainer);
 
 const container = document.createElement('div');
 container.classList.add('container');
-document.body.appendChild(container);
-
-
-// const req = require.context('../images/icons_mono', false, /\.svg$/)
-// console.log(req);
-// console.log(req.keys());
-// console.log(req.resolve("./cloudy.svg"));
-// console.log(req.id);
-// console.log(req("./cloudy.svg"));
-// const testCloudy = "cloudy";
-// const test = "./" + testCloudy + ".svg";
+displayContainer.appendChild(container);
 
 
 
-// const containerImg = document.createElement('div');
-// containerImg.innerHTML = `<img src=${req("./" + testCloudy + ".svg")} alt="">`
-// document.body.appendChild(containerImg);
+
+// Default city
+const selectedUnit = tempUnit(toggleUnit.checked);
+showCityWeather("Curitiba", selectedUnit);
 
 
-// console.log(typeof(req.keys()));
-
-// req.keys().forEach((filename) => {
-// 	console.log('filename: ' + filename);
-// 	const component = req(filename);
-// 	console.log(component);
-// });
