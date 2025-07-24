@@ -23,9 +23,14 @@ async function showCityWeather(cityName, unit) {
 	const container = document.querySelector('.container')
 	container.innerHTML = ``;
 
+	displayCurrentWeather(cityData, unit, container);
+	displayForecast(cityData, unit, container);
+}
 
-	// Add div with current weather information to container
-	container.innerHTML = `<div class="current-container">
+
+function displayCurrentWeather(cityData, unit, containerDiv) {
+
+	containerDiv.innerHTML = `<div class="current-container">
 		<h1> ${cityData.location} </h1>
 		<img src=${icons("./" + cityData.current.icon + ".svg" )} alt="" class="icon" id="current-icon">
 		<div>${cityData.current.condition_text}</div>
@@ -50,8 +55,11 @@ async function showCityWeather(cityName, unit) {
 			</div>
 		</div>
 	</div>`;
+}
 
-	// Div with forecast for the next days
+
+function displayForecast(cityData, unit, containerDiv) {
+
 	const forecast = document.createElement('div');
 	forecast.classList.add('forecast-container');
 
@@ -80,12 +88,11 @@ async function showCityWeather(cityName, unit) {
 		forecast.appendChild(cardForecastDay);
 	};
 
-	container.appendChild(forecast);
+	containerDiv.appendChild(forecast);
 }
 
 
 function changeTempUnit(newUnit) {
-	console.log(newUnit);
 	const allTempsToUpdate = document.querySelectorAll('.temperature');
 
 	if (newUnit == 'metric') {

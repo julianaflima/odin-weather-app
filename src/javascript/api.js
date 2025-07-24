@@ -20,7 +20,7 @@ async function getWeatherData(cityName) {
 
 		const city = new CityData;
 
-		// Current data
+		// Add current weather information to Object
 		city.location = data.resolvedAddress;
 		city.current.condition_text = data.currentConditions.conditions;
 		city.current.icon = data.currentConditions.icon;
@@ -35,10 +35,6 @@ async function getWeatherData(cityName) {
 		city.current.tempLow.us = metricToUs(city.current.tempLow.metric);
 		city.current.chanceRain = Math.round(data.days[0].precipprob);
 		city.current.humidity = Math.round(data.days[0].humidity);
-		// city.current.feelslike_c = data.current.feelslike_c;
-		// city.current.feelslike_f = data.current.feelslike_f;
-		// city.current.air_quality = data.current.air_quality;
-		// city.current.uv = data.current.uv;
 
 		// // Location
 		// city.location.name = data.location.name;
@@ -70,7 +66,6 @@ async function getAutocompleteOptions(inputName) {
 
 
 function nextXDaysForecast(city, data, numberOfDays) {
-	// TODO CHECK FOR DAYS GREATER THAN THE AVAILABLE DAYS
 
 	const daysToForescast = Math.min(data.days.length, numberOfDays)
 
@@ -88,6 +83,8 @@ function nextXDaysForecast(city, data, numberOfDays) {
 		city.forecast.push(followingDay);
 	}
 }
+
+
 
 export { 
 	CityData,
