@@ -1,30 +1,31 @@
-/*night*/
-/*:root.night {
-	--background-img: url("./images/night.jpg");
-	--color-base-text: white;
-	--icon-color-svg: invert(100%) sepia(0%) saturate(7500%) hue-rotate(315deg) brightness(103%) contrast(102%); /*white*/
-/*	--background-container: rgba(0, 0, 0, 0.2);
-}*/
-
-/*sunny*/
-:root.sunny {
-	--background-img: url("./images/sunny.jpg");
-	--color-base-text: black;
-	--icon-color-svg: invert(0%) sepia(0%) saturate(7500%) hue-rotate(340deg) brightness(99%) contrast(106%); /*black*/
-	--background-container: rgba(255, 255, 255, 0.7);
-}
-
 /*cloudy*/
-:root.night {
-	--background-img: url("./images/cloudy.jpg");
+:root.cloudy {
+	--background-img: url("./images/background/cloudy.jpg");
 	--color-base-text: white;
 	--icon-color-svg: invert(100%) sepia(0%) saturate(7500%) hue-rotate(315deg) brightness(103%) contrast(102%); /*white*/
 	--background-container: rgba(0, 0, 0, 0.1);
 }
 
+/*default*/
+:root.default {
+	--background-img: url("./images/background/default.jpeg");
+	--color-base-text: white;
+	--icon-color-svg: invert(100%) sepia(0%) saturate(7500%) hue-rotate(315deg) brightness(103%) contrast(102%); /*white*/
+	--background-container: rgba(0, 0, 0, 0.5);
+}
+
+
+/*night*/
+:root.night {
+	--background-img: url("./images/background/night.jpg");
+	--color-base-text: white;
+	--icon-color-svg: invert(100%) sepia(0%) saturate(7500%) hue-rotate(315deg) brightness(103%) contrast(102%); /*white*/
+	--background-container: rgba(0, 0, 0, 0.2);
+}
+
 /*rain*/
 :root.rain {
-	--background-img: url("./images/rain.jpg");
+	--background-img: url("./images/background/rain.jpg");
 	--color-base-text: white;
 	--icon-color-svg: invert(100%) sepia(0%) saturate(7500%) hue-rotate(315deg) brightness(103%) contrast(102%); /*white*/
 	--background-container: rgba(0, 0, 0, 0.3);
@@ -32,11 +33,20 @@
 
 /*snow*/
 :root.snow {
-	--background-img: url("./images/snow.jpg");
+	--background-img: url("./images/background/snow.jpg");
 	--color-base-text: white;
 	--icon-color-svg: invert(100%) sepia(0%) saturate(7500%) hue-rotate(315deg) brightness(103%) contrast(102%); /*white*/
 	--background-container: rgba(0, 0, 0, 0.3);
 }
+
+/*sunny*/
+:root.sunny {
+	--background-img: url("./images/background/sunny.jpg");
+	--color-base-text: black;
+	--icon-color-svg: invert(0%) sepia(0%) saturate(7500%) hue-rotate(340deg) brightness(99%) contrast(106%); /*black*/
+	--background-container: rgba(255, 255, 255, 0.7);
+}
+
 
 body {
 	background: var(--background-img);

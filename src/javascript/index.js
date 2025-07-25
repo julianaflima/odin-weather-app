@@ -42,7 +42,7 @@ toggleUnit.addEventListener("change", (e) => {
 
 
 // TODO: Change background depending on time/weather. For now the default is night. To be deleted when I can do that.
-document.documentElement.classList.add('night');
+document.documentElement.classList.add('default');
 
 
 // Div where the weather info will be shown

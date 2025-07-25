@@ -1,4 +1,5 @@
 import { getWeatherData } from "./api.js"
+import { chooseBackground } from "./background.js"
 
 
 // Get the path of all images inside ./images/icons_mono
@@ -25,6 +26,8 @@ async function showCityWeather(cityName, unit) {
 
 	displayCurrentWeather(cityData, unit, container);
 	displayForecast(cityData, unit, container);
+	// displayBackground(cityData.current.icon);
+
 }
 
 
@@ -115,6 +118,12 @@ function changeTempUnit(newUnit) {
 			temp.innerHTML = `${temp.dataset.tempUs}`;
 		});
 	}
+}
+
+
+function displayBackground(icon) {
+	console.log("in displayBackground function");
+	chooseBackground(icon);
 }
 
 export {
