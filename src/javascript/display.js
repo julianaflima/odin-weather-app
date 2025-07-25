@@ -26,7 +26,7 @@ async function showCityWeather(cityName, unit) {
 
 	displayCurrentWeather(cityData, unit, container);
 	displayForecast(cityData, unit, container);
-	// displayBackground(cityData.current.icon);
+	displayBackground(cityData.current.icon);
 
 }
 
