@@ -60,18 +60,3 @@ displayContainer.appendChild(container);
 // Default city
 const selectedUnit = tempUnit(toggleUnit.checked);
 showCityWeather("Curitiba", selectedUnit);
-
-
-
-// console.log(followingDay.date);
-// let dayOfWeek = new Date("2025-07-26");
-// console.log(dayOfWeek);
-// let dayOfWeekName = dayOfWeek.toLocaleString('default', {weekday: 'short'});
-
-// const dayOfWeekDigit = new Date().getDay();
-// console.log(dayOfWeekDigit); // 👉️ 0
-
-// const dayOfWeekName = new Date().toLocaleString('default', {
-//   weekday: 'short',
-// });
-// // console.log(dayOfWeekName); // 👉️ Sunday
