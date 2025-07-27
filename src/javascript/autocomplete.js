@@ -1,8 +1,9 @@
 import { getAutocompleteOptions } from "./api.js";
 import { showCityWeather } from "./display.js";
 
+// DOESN'T WORK AND DIDN'T TRY TO MAKE IT WORK
 async function showAutocompleteDropdown(cityName) {
-	console.log(cityName);
+	// console.log(cityName);
 	// let options = await getAutocompleteOptions(cityName);
 	// console.log(options);
 	// const autocompleteList = document.querySelector('.autocomplete-list');
