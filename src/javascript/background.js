@@ -1,15 +1,10 @@
 
 
 function chooseBackground(icon) {
-	console.log('inside chooseBackground');
 	const root = document.documentElement;
 
-	console.log(root)
-
-	console.log(icon);
 	switch (icon) {
 		case "clear-day":
-			console.log(icon);
 			root.removeAttribute("class");
 			root.classList.add("sunny");
 			break;
@@ -18,7 +13,6 @@ function chooseBackground(icon) {
 		case "fog":
 		case "partly-cloudy-day": 
 		case "wind":
-			console.log(icon);
 			root.removeAttribute("class");
 			root.classList.add("cloudy");
 			break;
@@ -28,7 +22,6 @@ function chooseBackground(icon) {
 		case "rain-snow-showers-night":
 		case "snow-showers-night":
 		case "thunder":
-			console.log(icon);
 			root.removeAttribute("class");
 			root.classList.add("night");
 			break;
@@ -38,7 +31,6 @@ function chooseBackground(icon) {
 		case "sleet":
 		case "snow-showers-day":
 		case "snow":
-			console.log(icon);
 			root.removeAttribute("class");
 			root.classList.add("snow");
 			break;
@@ -50,13 +42,11 @@ function chooseBackground(icon) {
 		case "thunder-rain":
 		case "thunder-showers-day":
 		case "thunder-showers-night":
-			console.log(icon);
 			root.removeAttribute("class");
 			root.classList.add("rain");
 			break;
 
 		default:
-			console.log(icon);
 			root.removeAttribute("class");
 			root.classList.add("default");
 			break;
