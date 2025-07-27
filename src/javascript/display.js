@@ -16,25 +16,28 @@ async function showCityWeather(cityName, unit) {
 
 	const cityData = await getWeatherData(cityName);
 
-	// Clear dropdown
-	document.querySelector('.autocomplete-list').innerHTML = '';
-	// document.querySelector('.results').classList.add('hidden');
+	if (!cityData) {
+		console.log(cityData);
+	} else {
+		// Clear dropdown
+		// document.querySelector('.autocomplete-list').innerHTML = '';
+		// document.querySelector('.results').classList.add('hidden');
 
-	// Clear/Reset container with results
-	const container = document.querySelector('.container')
-	container.innerHTML = ``;
+		// Clear/Reset container with results
+		const container = document.querySelector('.container')
+		container.innerHTML = ``;
 
-	displayCurrentWeather(cityData, unit, container);
-	displayForecast(cityData, unit, container);
-	displayBackground(cityData.current.icon);
-
+		displayCurrentWeather(cityData, unit, container);
+		displayForecast(cityData, unit, container);
+		displayBackground(cityData.current.icon);
+	}
 }
 
 
 function displayCurrentWeather(cityData, unit, containerDiv) {
 
 	containerDiv.innerHTML = `<div class="current-container">
-		<h1> ${cityData.location} </h1>
+		<h1> ${cityData.location.city + ', ' + cityData.location.state + cityData.location.country} </h1>
 		<img src=${icons("./" + cityData.current.icon + ".svg" )} alt="" class="icon" id="current-icon">
 		<div>${cityData.current.condition_text}</div>
 		<div id="current-temperature"> 
@@ -122,7 +125,6 @@ function changeTempUnit(newUnit) {
 
 
 function displayBackground(icon) {
-	console.log("in displayBackground function");
 	chooseBackground(icon);
 }
 
