@@ -59,4 +59,4 @@ displayContainer.appendChild(container);
 
 // Default city
 const selectedUnit = tempUnit(toggleUnit.checked);
-showCityWeather("Curitiba", selectedUnit);
+showCityWeather("Athens", selectedUnit);
